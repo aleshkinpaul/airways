@@ -5,7 +5,6 @@
     type="email"
     matInput
     placeholder="Ex. pat@example.com"
-    [value]="userEmail"
   />
   <mat-error *ngIf="FG.hasError('required')">Required field</mat-error>
   <mat-error *ngIf="FG.hasError('email')">Enter correct email</mat-error>

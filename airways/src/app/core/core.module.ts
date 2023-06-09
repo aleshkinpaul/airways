@@ -10,7 +10,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { DateSelectComponent } from './components/date-select/date-select.component';
 import { CurrencySelectComponent } from './components/currency-select/currency-select.component';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthComponent } from './components/auth/auth.component';
 import { SharedModule } from '@shared/shared.module';
