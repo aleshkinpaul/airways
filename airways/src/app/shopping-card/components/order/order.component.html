@@ -1,0 +1,92 @@
+<div class="order-container">
+  <div class="smallWidthDescriptionContainer">
+    <div *ngIf="smallPage" class="type-of-value"><strong>No:</strong></div>
+    <div class="flex gap-half item-center value-container">
+      <mat-checkbox
+        color="primary"
+        [checked]="data.isChecked"
+        (click)="addCheckboxValueToStore()"
+        class="example-margin"
+      ></mat-checkbox>
+      <mat-card-title style="color: #0090bd; font-size: 20px"
+        >{{ data.flightNum }}
+      </mat-card-title>
+    </div>
+    <app-card-menu
+      *ngIf="smallPage"
+      [order]="order"
+      [id]="data.id"
+    ></app-card-menu>
+  </div>
+  <mat-divider class="mat-divider-costum" *ngIf="smallPage"></mat-divider>
+  <div class="smallWidthDescriptionContainer">
+    <div *ngIf="smallPage" class="type-of-value"><strong>Flight:</strong></div>
+    <div class="column justify-around value-container">
+      <p class="text-center">{{ data.from }} - {{ data.to }}</p>
+      <p class="text-center" *ngIf="data.backDate">
+        {{ data.to }} - {{ data.from }}
+      </p>
+    </div>
+  </div>
+  <mat-divider class="mat-divider-costum" *ngIf="smallPage"></mat-divider>
+  <div class="smallWidthDescriptionContainer">
+    <div *ngIf="smallPage" class="type-of-value">
+      <strong>Type trip:</strong>
+    </div>
+    <div class="flex item-center value-container">
+      <p class="text-center" *ngIf="data.backDate; else roundTrip">
+        Round Trip
+      </p>
+      <ng-template #roundTrip>
+        <p>One way</p>
+      </ng-template>
+    </div>
+  </div>
+  <mat-divider class="mat-divider-costum" *ngIf="smallPage"></mat-divider>
+  <div class="smallWidthDescriptionContainer">
+    <div *ngIf="smallPage" class="type-of-value">
+      <strong>Date & Time:</strong>
+    </div>
+    <div class="justify-around column value-container">
+      <p class="text-center">
+        {{ data.forvardDate.landingDate | date : "d MMM, y" }},
+        {{ data.forvardDate.landingDate | date : "h:mm" }} -
+        {{ data.forvardDate.takeoffDate | date : "h:mm" }}
+      </p>
+      <p *ngIf="data.backDate" class="text-center">
+        {{ data.backDate.landingDate | date : "d MMM, y" }},
+        {{ data.backDate.landingDate | date : "h:mm" }} -
+        {{ data.backDate.takeoffDate | date : "h:mm" }}
+      </p>
+    </div>
+  </div>
+  <mat-divider class="mat-divider-costum" *ngIf="smallPage"></mat-divider>
+  <div class="smallWidthDescriptionContainer">
+    <div *ngIf="smallPage" class="type-of-value">
+      <strong>Passengers:</strong>
+    </div>
+    <div class="justify-around column value-container">
+      <p *ngIf="data.adult > 0">{{ data.adult }} x Adult</p>
+      <p *ngIf="data.child > 0">{{ data.child }} x Child</p>
+      <p *ngIf="data.infant > 0">{{ data.infant }} x Infant</p>
+    </div>
+  </div>
+  <mat-divider class="mat-divider-costum" *ngIf="smallPage"></mat-divider>
+  <div class="smallWidthDescriptionContainer">
+    <div *ngIf="smallPage" class="type-of-value"><strong>Price:</strong></div>
+    <div
+      *ngIf="currency$ | async as currency"
+      class="flex justify-between item-center value-container"
+    >
+      <p class="price-secondary">
+        {{ data.price | currencyConverter : currency }}
+      </p>
+      <app-card-menu
+        *ngIf="!smallPage"
+        [order]="order"
+        [id]="data.id"
+      ></app-card-menu>
+    </div>
+  </div>
+</div>
+<mat-divider [class.mat-divider-costume2]="smallPage"></mat-divider>

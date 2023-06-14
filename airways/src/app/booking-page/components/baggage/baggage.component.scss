@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls {
+
+  & .controls__decrease,
+  & .controls__count,
+  & .controls__increase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: middle;
+
+    user-select: none;
+  }
+
+  & .controls__count {
+    font-size: 24px;
+  }
+
+  & .controls__decrease,
+  & .controls__increase {
+    font-size: 30px;
+
+    color: #49454F;
+
+    &:hover {
+      cursor: pointer;
+      color: #000000;
+    }
+  }
+}
+
+

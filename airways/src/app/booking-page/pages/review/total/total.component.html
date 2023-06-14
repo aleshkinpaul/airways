@@ -1,0 +1,18 @@
+<mat-card class="column item-center">
+  <mat-card-content class="container">
+    <app-prise [total]="total.adult"></app-prise>
+    <app-prise [total]="total.child"></app-prise>
+    <app-prise [total]="total.infant"></app-prise>
+  </mat-card-content>
+  <mat-card-footer class="w-full">
+    <mat-divider></mat-divider>
+    <strong class="flex justify-center total">
+      <div class="flex justify-between fz-20 container">
+        <p>TOTAL:</p>
+        <p *ngIf="currency$ | async as currency" class="text-primary">
+          {{ total.totalPrice | currencyConverter : currency }}
+        </p>
+      </div>
+    </strong>
+  </mat-card-footer>
+</mat-card>

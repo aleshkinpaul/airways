@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Account page</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions *ngIf="!smallPage" class="bg-light action-container">
+    <app-sort-button
+      (click)="sortOrders('No')"
+      sortName="No."
+    ></app-sort-button>
+    <app-sort-button
+      (click)="sortOrders('Flight')"
+      sortName="Flight"
+    ></app-sort-button>
+    <app-sort-button
+      (click)="sortOrders('TripType')"
+      sortName="Type trip"
+    ></app-sort-button>
+    <app-sort-button
+      (click)="sortOrders('Date')"
+      sortName="Data & Time"
+    ></app-sort-button>
+    <app-sort-button
+      (click)="sortOrders('Passengers')"
+      sortName="Passengers"
+    ></app-sort-button>
+    <app-sort-button
+      (click)="sortOrders('Price')"
+      sortName="Price"
+    ></app-sort-button>
+  </mat-card-actions>
+  <mat-card-content>
+    <app-order
+      *ngFor="
+        let order of orders | sortOrders : (sortType$ | async) : sortHelper
+      "
+      [order]="order"
+      [smallPage]="smallPage"
+    ></app-order>
+
+    <div class="new-trip flex item-center justify-between">
+      <div
+        *ngIf="currency$ | async as currency"
+        class="flex gap-half item-center"
+      >
+        <mat-card-subtitle class="text-black fz-20 f-w-700"
+          >Total
+        </mat-card-subtitle>
+        <mat-card-title>{{
+          totalPrice$ | async | currencyConverter : currency
+        }}</mat-card-title>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="cart-footer flex justify-between item-center">
+      <div class="flex gap-2 item-center">
+        <button
+          class="pay-button"
+          (click)="toBookingSummary()"
+          color="primary"
+          mat-raised-button
+        >
+          Booking Summary
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

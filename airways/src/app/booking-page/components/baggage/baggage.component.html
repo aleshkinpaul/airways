@@ -1,0 +1,16 @@
+<div class="controls">
+  <span
+    class="controls__decrease"
+    [@increaseSymbol]="stateDecrease"
+    (click)="decreasePassengersCount()"
+    >&#8212;</span
+  >
+  <span class="controls__count">{{ count }}</span>
+  <span
+    class="controls__increase"
+    [@increaseSymbol]="stateIncrease"
+    (click)="increasePassengersCount()"
+    >+</span
+  >
+</div>
+<mat-card-subtitle>{{ baggageName }}</mat-card-subtitle>

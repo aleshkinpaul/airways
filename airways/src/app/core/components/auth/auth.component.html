@@ -1,0 +1,96 @@
+<mat-dialog-content>
+  <div class="dialog-container">
+    <mat-button-toggle-group name="fontStyle">
+      <mat-button-toggle
+        (click)="logIn = true"
+        checked
+        class="button-toggle"
+        value="LogIn"
+        >Log in
+      </mat-button-toggle>
+      <mat-button-toggle
+        (click)="logIn = false"
+        class="button-toggle"
+        value="SignUp"
+        >Sign up
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="column gap-half display-none">
+      <button mat-button class="with-google-button">
+        <div class="with-google">
+          <mat-icon svgIcon="google"></mat-icon>
+          <span>Continue with Google</span>
+        </div>
+      </button>
+      <button mat-button class="with-google-button">
+        <div class="with-google">
+          <mat-icon svgIcon="facebook"></mat-icon>
+          <span>Continue with Facebook</span>
+        </div>
+      </button>
+    </div>
+    <div class="line-container">
+      <div class="line"></div>
+      <span class="line-text">{{
+        logIn ? "or log in with your email" : "or sign up with your email"
+      }}</span>
+      <div class="line"></div>
+    </div>
+    <form
+      *ngIf="logIn"
+      [formGroup]="logInForm"
+      (ngSubmit)="submitLogInForm()"
+      class="column gap-half w-full"
+    >
+      <app-input-email [logInForm]="logInForm"></app-input-email>
+      <app-input-password [logInForm]="logInForm"></app-input-password>
+      <button class="button" mat-raised-button type="submit">Log in</button>
+      <mat-error *ngIf="errors.loginError">User not found</mat-error>
+    </form>
+    <form
+      *ngIf="!logIn"
+      [formGroup]="singInForm"
+      (ngSubmit)="submitSingInForm()"
+      class="column gap-half w-full"
+    >
+      <app-input-email [singInForm]="singInForm"></app-input-email>
+      <app-input-password [singInForm]="singInForm"></app-input-password>
+      <app-input-name
+        [singInForm]="singInForm"
+        nameType="firstName"
+      ></app-input-name>
+      <app-input-name
+        [singInForm]="singInForm"
+        nameType="lastName"
+      ></app-input-name>
+      <app-input-birthday [singInForm]="singInForm"></app-input-birthday>
+      <mat-button-toggle-group
+        [formControl]="singInForm.controls.gender"
+        class="button-toggle-container input-width all-passengers-input-width button-toggle-group"
+      >
+        <mat-button-toggle value="male"> Male</mat-button-toggle>
+        <mat-button-toggle value="female">Female</mat-button-toggle>
+      </mat-button-toggle-group>
+      <app-input-country-code
+        [singInForm]="singInForm"
+      ></app-input-country-code>
+      <app-input-phone [singInForm]="singInForm"></app-input-phone>
+      <app-input-citizenship [singInForm]="singInForm"></app-input-citizenship>
+      <div>
+        <mat-checkbox
+          color="primary"
+          [formControl]="singInForm.controls.privacyPolicy"
+        >
+        </mat-checkbox>
+        <span class="privacy-text"
+          >I agree to Airway's <span>Privacy Policy</span> and
+          <span>Terms of Use</span>
+        </span>
+      </div>
+      <button class="button" mat-raised-button type="submit">Sign up</button>
+      <mat-error *ngIf="errors.registerError"
+        >This user already exist
+      </mat-error>
+    </form>
+  </div>
+</mat-dialog-content>

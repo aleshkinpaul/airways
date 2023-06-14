@@ -1,0 +1,65 @@
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.people-description-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sum-container {
+  width: 49%;
+  align-self: end;
+
+}
+
+.mat-mdc-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button-container {
+  gap: 2.5rem
+}
+
+.button {
+  min-width: 126px;
+  height: 60px;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 992px) {
+  :host {
+    width: 100%;
+  }
+  .people-description-container {
+    flex-direction: column;
+  }
+  .sum-container {
+    width: 100%;
+
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .button-container {
+    gap: 1rem;
+    flex-direction: column;
+    width: 100%;
+
+  }
+  .button {
+    width: 100%;
+  }
+}

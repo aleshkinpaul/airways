@@ -1,0 +1,14 @@
+<mat-form-field class="w-full" *ngIf="FG">
+  <mat-label>Telephone</mat-label>
+  <input
+    type="tel"
+    [formControl]="FG"
+    matInput
+    placeholder="Ex. 555-555-1234"
+  />
+  <mat-error *ngIf="FG.hasError('validPhone') && !FG.hasError('required')"
+    >Phone is not valid
+  </mat-error>
+  <mat-error *ngIf="FG.hasError('required')">Required field</mat-error>
+  <mat-icon matSuffix>mode_edit</mat-icon>
+</mat-form-field>

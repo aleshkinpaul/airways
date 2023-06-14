@@ -1,0 +1,24 @@
+.input-code,
+.input-tel {
+  width: 25%;
+}
+
+.input-email {
+  width: 40%;
+}
+
+.mat-mdc-card-content {
+  padding-bottom: 0 !important;
+  padding-top: 23px !important;
+}
+
+
+@media screen and (max-width: 992px) {
+  .passengers-content-position {
+    flex-direction: column;
+  }
+  .all-passengers-input-width {
+    width: 100%;
+  }
+
+}

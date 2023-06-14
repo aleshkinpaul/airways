@@ -1,0 +1,63 @@
+:host {
+  width: 100%;
+
+
+}
+
+.order-container {
+  display: grid;
+  grid-template-columns: 3fr 3fr 2fr 4fr 3fr 3fr;
+  justify-content: start;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .order-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //margin-top: 2rem;
+  }
+  .value-container {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.menu {
+  margin-right: -1.5rem;
+}
+
+p {
+  margin: 0
+}
+
+.smallWidthDescriptionContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+}
+
+.type-of-value {
+  width: 30%;
+}
+
+.mat-divider-costum {
+  width: 100%;
+}
+
+.mat-divider-costume2 {
+  border-top-width: 5px;
+  width: 100%;
+  transform: scale(1.06);
+  margin-top: 1rem;
+}
+

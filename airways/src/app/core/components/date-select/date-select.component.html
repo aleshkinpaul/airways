@@ -1,0 +1,18 @@
+<mat-select
+  [value]="dateType$ | async"
+  class="mat-select-date"
+  (selectionChange)="changeDateType($event.value)"
+>
+  <mat-option class="mat-option-date" [value]="'MM/DD/YYYY'"
+    >MM/DD/YYYY</mat-option
+  >
+  <mat-option class="mat-option-date" [value]="'DD/MM/YYYY'"
+    >DD/MM/YYYY</mat-option
+  >
+  <mat-option class="mat-option-date" [value]="'YYYY/DD/MM'"
+    >YYYY/DD/MM</mat-option
+  >
+  <mat-option class="mat-option-date" [value]="'YYYY/MM/DD'"
+    >YYYY/MM/DD</mat-option
+  >
+</mat-select>

@@ -1,0 +1,39 @@
+<form class="main-form">
+  <div class="radio-buttons">
+    <label for="roundTrip">
+      <input
+        type="radio"
+        id="roundTrip"
+        name="tripType"
+        [checked]="isRoundTrip"
+        (click)="changeTripType(true)"
+      />
+      Round Trip
+    </label>
+    <label for="oneWay">
+      <input
+        type="radio"
+        id="oneWay"
+        name="oneWay"
+        [checked]="!isRoundTrip"
+        (click)="changeTripType(false)"
+      />
+      One Way
+    </label>
+  </div>
+
+  <app-airports-form class="airports-form"></app-airports-form>
+  <div class="dates-passengers-wrapper">
+    <app-date-form class="date-form"></app-date-form>
+    <app-passengers-form class="passengers-form"></app-passengers-form>
+  </div>
+
+  <button
+    type="submit"
+    class="search-button"
+    [disabled]="!readyForSearch && isSearchImplement"
+    (click)="onSubmit($event)"
+  >
+    Search
+  </button>
+</form>

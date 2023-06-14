@@ -1,0 +1,91 @@
+<mat-form-field
+  appearance="fill"
+  *ngIf="isRoundTrip"
+  class="date-form"
+  [formGroup]="flightForm"
+>
+  <mat-label
+    >Dates
+    <mat-error
+      *ngIf="
+        (departureDateControl.value === null && departureDateControl.touched) ||
+        (departureDateControl.value === null && (isSearchImplement$ | async))
+      "
+      >Please select departure date</mat-error
+    ><mat-error
+      *ngIf="
+        (returnDateControl.value === null && returnDateControl.touched) ||
+        (returnDateControl.value === null && (isSearchImplement$ | async))
+      "
+      >Please select return date</mat-error
+    ><mat-error
+      *ngIf="
+  departureDateControl.errors?.['departureDateInvalid']
+"
+      >Departure date earlier than tomorrow</mat-error
+    ><mat-error *ngIf="returnDateControl.errors?.['returnDateInvalid']"
+      >Return date earlier than the departure date.</mat-error
+    ></mat-label
+  >
+  <mat-date-range-input [rangePicker]="picker">
+    <input
+      matStartDate
+      name="departureDate"
+      placeholder="Depart"
+      (focus)="isHintVisible = true"
+      (blur)="isHintVisible = false"
+      (dateChange)="setDepartureDate($event.target.value)"
+      [formControl]="departureDateControl"
+      matInputTouchUi
+    />
+    <input
+      matEndDate
+      name="returnDate"
+      placeholder="Return"
+      (focus)="isHintVisible = true"
+      (blur)="isHintVisible = false"
+      (dateChange)="setReturnDate($event.target.value)"
+      [formControl]="returnDateControl"
+      matInputTouchUi
+    />
+  </mat-date-range-input>
+  <mat-hint *ngIf="picker.opened || isHintVisible"
+    ><span>{{ dateType$ | async }}</span
+    ><span> - {{ dateType$ | async }}</span></mat-hint
+  >
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker matDatepickerTouchUi></mat-date-range-picker>
+</mat-form-field>
+
+<mat-form-field appearance="fill" *ngIf="!isRoundTrip">
+  <mat-label
+    >Date<mat-error
+      *ngIf="
+        (departureDateControl.value === null && departureDateControl.touched) ||
+        (departureDateControl.value === null && (isSearchImplement$ | async))
+      "
+      >Please select departure date</mat-error
+    ><mat-error
+      *ngIf="
+    departureDateControl.errors?.['departureDateInvalid']
+  "
+      >Departure date earlier than tomorrow</mat-error
+    ></mat-label
+  >
+  <input
+    matInput
+    name="departureDate"
+    [matDatepicker]="picker"
+    placeholder="Depart"
+    (focus)="isHintVisible = true"
+    (blur)="isHintVisible = false"
+    (dateChange)="setDepartureDate($event.target.value)"
+    [formControl]="departureDateControl"
+    [matDatepickerFilter]="filterDepartureDate"
+  />
+  <mat-hint *ngIf="picker.opened || isHintVisible">{{
+    dateType$ | async
+  }}</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

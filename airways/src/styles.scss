@@ -1,4 +1,286 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "app/core/styles/variables";
+@import "app/core/styles/helpSimpleClasses";
+@import "app/core/styles/material";
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.main {
+  padding: 10px 0;
+}
+
+.container {
+  width: 80%;
+  align-items: center;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    width: 95%;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .passengers-content-position {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .all-passengers-input-width {
+    width: 100%;
+  }
+}
+
+
+// work only in this file
+.mat-stepper {
+  height: 30px;
+  background-color: #00000000;
+
+  & .mat-step-icon-selected,
+  & .mat-step-icon-state-edit {
+    background-color: #0090BD;
+  }
+
+  & .mat-step-header {
+    height: 30px;
+
+    @media (max-width: 500px) {
+      padding: 0 calc(15.385vw - 53.92px);
+    }
+
+    @media (max-width: 370px) {
+      padding: 0 calc(15.976vw - 15.95px);
+    }
+  }
+
+  & .mat-step-icon {
+    width: 16px;
+    height: 16px;
+
+    outline: 1px solid #0090BD;
+  }
+
+  & .mat-step-icon-content {
+    display: flex;
+    align-items: center;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.5px;
+
+    color: #ffffff;
+  }
+
+  & .mat-step-icon .mat-icon {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+  }
+
+  & .mat-stepper-horizontal-line {
+    height: 1px;
+    background: #ffffff;
+
+    @media (max-width: 470px) {
+      display: none;
+    }
+  }
+
+  & .mat-step-label {
+    @media (max-width: 370px) {
+      display: none;
+    }
+  }
+
+  & .mat-step-text-label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+
+    color: #ffffff;
+  }
+}
+
+.mat-select-currency,
+.mat-select-date {
+
+  &:hover .mat-mdc-select-value {
+    color: #000000;
+  }
+
+  &:hover .ng-tns-c17-0,
+  &:hover .ng-tns-c17-2,
+  &:hover .mat-mdc-select-arrow svg {
+    fill: #000000;
+  }
+
+  & .mat-mdc-select-arrow svg {
+    fill: #ffffff;
+  }
+
+  & .mat-mdc-select-value {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+
+    color: #ffffff;
+  }
+
+  & .ng-tns-c17-0,
+  & .ng-tns-c17-2 {
+    fill: #ffffff;
+  }
+
+}
+
+.mat-option-currency,
+.mat-option-date {
+  & .mdc-list-item__primary-text {
+    color: #49454F;
+  }
+
+  & .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
+    color: #11397E;
+  }
+}
+
+
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel {
+  position: relative;
+  left: -17px;
+  top: 10px;
+}
+
+.mat-select-currency .mat-mdc-select-arrow svg {
+  display: none;
+}
+
+.main-component-location-form {
+  & .mat-mdc-select-arrow-wrapper {
+    display: none;
+  }
+
+  & .mat-mdc-text-field-wrapper {
+    background: #F4F6F9;
+    border-radius: 4px;
+    border: 1px solid #74767A;
+  }
+
+  & .mat-mdc-floating-label {
+    max-width: calc(100% / 0.75 - 24px) !important;
+    transform: translateY(-106%) scale(0.75) !important;
+  }
+
+  & .mdc-floating-label--float-above {
+    color: #11397E !important
+  }
+
+  & .mat-mdc-select-placeholder {
+    display: block;
+    color: #74767A !important;
+    -webkit-text-fill-color: #74767A !important;
+  }
+
+  & .mdc-line-ripple {
+    display: none;
+  }
+}
+
+.ng-trigger {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #11397E;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: lighten(#11397E, 10%);
+  }
+}
+
+.dates-passengers-wrapper,
+.date-form,
+.airport-form {
+  & .mdc-line-ripple {
+    display: none;
+  }
+
+  & .mat-form-field-appearance-outline {
+    opacity: 0;
+  }
+
+  & .mat-mdc-text-field-wrapper {
+    border-radius: 4px;
+    border: 1px solid #74767A;
+  }
+
+  & .mat-mdc-select-arrow-wrapper {
+    display: none;
+  }
+
+  & .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  & .mat-mdc-form-field-focus-overlay {
+    display: none;
+  }
+
+  & .mdc-menu-surface.mat-mdc-select-panel {
+    left: 0;
+    top: 0;
+
+    width: fit-content;
+
+    border: 4px solid #ffffff;
+  }
+
+  & label {
+    color: #11397E;
+  }
+
+  & .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #11397E;
+  }
+}
+
+.mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
+  color: #11397E;
+}

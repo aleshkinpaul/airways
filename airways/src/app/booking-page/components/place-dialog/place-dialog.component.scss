@@ -1,0 +1,26 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 4px;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14px;
+  width: 14px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.cell-disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.cell-selected {
+  background-color: lightblue;
+}

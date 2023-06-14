@@ -1,0 +1,16 @@
+<div>
+  <p>
+    <strong>{{ total.count }} x {{ total.name | titlecase }} Fare</strong>
+  </p>
+  <div class="padding-left">
+    <p>Fare</p>
+    <p>Tax & Service Changes</p>
+  </div>
+</div>
+<div *ngIf="currency$ | async as currency">
+  <p>
+    <strong>{{ total.allPrice | currencyConverter : currency }}</strong>
+  </p>
+  <p>{{ total.fare | currencyConverter : currency }}</p>
+  <p>{{ total.tax | currencyConverter : currency }}</p>
+</div>

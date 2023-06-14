@@ -1,0 +1,58 @@
+<mat-card [formGroup]="details">
+  <mat-card-content>
+    <div class="flex justify-between passengers-content-position">
+      <mat-form-field
+        class="input-code all-passengers-input-width"
+        appearance="fill"
+      >
+        <mat-label>Country code</mat-label>
+        <mat-select [formControl]="details.controls.countryCode">
+          <div *ngFor="let item of countryCode">
+            <mat-option [value]="item.value"
+              >{{ item.name + " (" + item.value + ")" }}
+            </mat-option>
+          </div>
+        </mat-select>
+        <mat-error *ngIf="details.controls.countryCode.hasError('required')"
+          >Required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-tel all-passengers-input-width">
+        <mat-label>Telephone</mat-label>
+        <input
+          type="tel"
+          [formControl]="details.controls.phone"
+          matInput
+          placeholder="Ex. 555-555-1234"
+        />
+        <mat-error
+          *ngIf="
+            details.controls.phone.hasError('validPhone') &&
+            !details.controls.phone.hasError('required')
+          "
+          >Phone is not valid
+        </mat-error>
+        <mat-error *ngIf="details.controls.phone.hasError('required')"
+          >Required field
+        </mat-error>
+
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="input-email all-passengers-input-width">
+        <mat-label>Email</mat-label>
+        <input
+          [formControl]="details.controls.email"
+          type="email"
+          matInput
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-error *ngIf="details.controls.email.hasError('required')"
+          >Required field
+        </mat-error>
+        <mat-error *ngIf="details.controls.email.hasError('email')"
+          >Enter correct email
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>

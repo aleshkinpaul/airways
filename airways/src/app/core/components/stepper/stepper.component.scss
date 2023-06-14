@@ -1,0 +1,13 @@
+.mat-stepper {
+  @media (max-width: 1292px) {
+    margin-left: calc(45.018vw - 225.08px);
+  }
+
+  @media (max-width: 470px) {
+    margin-left: calc(-13.000vw + 48.10px);
+  }
+
+  @media (max-width: 370px) {
+    margin-left: 0;
+  }
+}

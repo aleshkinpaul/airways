@@ -1,0 +1,30 @@
+<ng-container *ngIf="flight$ | async as flight">
+  <app-icon-label icon="preview" logo="Summary"></app-icon-label>
+  <div
+    *ngIf="passengersInfo$ | async as passengersInfo"
+    class="people-description-container w-full"
+  >
+    <app-order
+      [data]="flight.forwardFlight"
+      [passengers]="passengersInfo"
+    ></app-order>
+    <app-order
+      *ngIf="flight.backFlight"
+      [data]="flight.backFlight"
+      [passengers]="passengersInfo"
+    ></app-order>
+  </div>
+  <div *ngIf="passengersInfo$ | async as passengersInfo" class="sum-container">
+    <app-total [passengersInfo]="passengersInfo" [flight]="flight"></app-total>
+  </div>
+  <div class="self-end flex button-container">
+    <button
+      (click)="backToAccountPage()"
+      class="button"
+      color="primary"
+      mat-button
+    >
+      Return to Account
+    </button>
+  </div>
+</ng-container>

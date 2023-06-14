@@ -1,0 +1,25 @@
+.mat-mdc-card-title {
+  color: $primary-color;
+  font-weight: 700;
+}
+
+.mdc-switch {
+  width: 52px !important;
+}
+
+.mdc-switch__track {
+  height: 32px !important;
+  border-radius: 16px !important;
+}
+
+.mdc-switch__handle-track {
+  width: calc(100% - var(--mdc-switch-handle-width, 34px)) !important;
+}
+
+
+.mdc-switch__handle {
+  margin-left: 5px !important;
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+}

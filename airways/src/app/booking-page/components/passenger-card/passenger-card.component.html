@@ -1,0 +1,102 @@
+<mat-card-content>
+  <div [formGroup]="card" class="flex gap-2 passengers-content-position">
+    <mat-form-field class="flex input-width all-passengers-input-width">
+      <mat-label>First name</mat-label>
+      <input [formControl]="card.controls.firstName" matInput type="text" />
+      <mat-error *ngIf="card.controls.firstName.hasError('validName')"
+        >Name must not contain numbers
+      </mat-error>
+      <mat-error *ngIf="card.controls.firstName.hasError('required')"
+        >Required field
+      </mat-error>
+      <mat-error
+        *ngIf="
+          card.controls.firstName.hasError('minlength') &&
+          !card.controls.firstName.hasError('validName')
+        "
+        >Min length 3 characters
+      </mat-error>
+      <mat-icon
+        matSuffix
+        matTooltipPosition="after"
+        matTooltip="Add the passenger's name as it is written on their documents (passport or ID). Do not use any accents or special characters. Do not use a nickname. "
+        >info
+      </mat-icon>
+    </mat-form-field>
+    <mat-form-field class="flex input-width all-passengers-input-width">
+      <mat-label>Last name</mat-label>
+      <input [formControl]="card.controls.lastName" matInput type="text" />
+      <mat-error *ngIf="card.controls.lastName.hasError('validName')"
+        >Name must not contain numbers
+      </mat-error>
+      <mat-error *ngIf="card.controls.lastName.hasError('required')"
+        >Required field
+      </mat-error>
+      <mat-error
+        *ngIf="
+          card.controls.lastName.hasError('minlength') &&
+          !card.controls.lastName.hasError('validName')
+        "
+        >Min length 3 characters
+      </mat-error>
+      <mat-icon
+        matSuffix
+        matTooltipPosition="after"
+        matTooltip="Add the passenger's name as it is written on their documents (passport or ID). Do not use any accents or special characters. Do not use a nickname. "
+        >info
+      </mat-icon>
+    </mat-form-field>
+
+    <mat-button-toggle-group
+      [formControl]="card.controls.gender"
+      class="button-toggle-container input-width all-passengers-input-width button-toggle-group"
+    >
+      <mat-button-toggle value="male"> Male</mat-button-toggle>
+      <mat-button-toggle value="female">Female</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-form-field
+      appearance="fill"
+      class="input-width all-passengers-input-width"
+    >
+      <mat-label>Date of birth</mat-label>
+      <input
+        matInput
+        placeholder="MM/DD/YYYY"
+        [matDatepicker]="picker"
+        [formControl]="card.controls.birthdayDate"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="card.controls.birthdayDate.hasError('futureDate')"
+        >Date cannot be in the future
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div *ngIf="accessible" class="flex gap-2 item-center width600">
+    <app-seats-button [seatFC]="card.controls.seat"></app-seats-button>
+    <mat-slide-toggle
+      [formControl]="card.controls.invalid"
+      color="primary"
+      class="flex"
+    >
+      <div class="flex justify-center item-center">
+        <mat-icon>wheelchair_pickup</mat-icon>
+        <mat-card-subtitle class="m-auto">
+          Need special assistance?
+        </mat-card-subtitle>
+      </div>
+    </mat-slide-toggle>
+    <app-baggage
+      [baggageControl]="card.controls.baggageBig"
+      baggageName="Extra baggage(23kg)"
+    ></app-baggage>
+    <app-baggage
+      [baggageControl]="card.controls.baggageSmall"
+      baggageName="cabin bag(8kg)"
+    ></app-baggage>
+  </div>
+</mat-card-content>
