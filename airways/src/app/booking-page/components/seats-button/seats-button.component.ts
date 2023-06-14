@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { PlaceDialogComponent } from '@booking/components/place-dialog/place-dialog.component';
@@ -13,7 +13,7 @@ export class SeatsButtonComponent {
   selectedPlaceControl: FormControl = new FormControl();
   seat?: string;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private cdr: ChangeDetectorRef) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PlaceDialogComponent, {
@@ -31,8 +31,10 @@ export class SeatsButtonComponent {
         }) => {
           if (!result) return;
           if (result.place) {
+            console.log(22222);
             this.seat = result.place;
             this.seatFC.setValue(result.place);
+            this.cdr.detectChanges();
           }
         }
       );
